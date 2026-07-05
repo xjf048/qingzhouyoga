@@ -21,19 +21,17 @@ const affairsSubNav = [
   { label: '01 · 选址', href: '#phase-1' },
   { label: '02 · 注册', href: '#phase-2' },
   { label: '03 · 装修', href: '#phase-3' },
-  { label: '04 · 物品', href: '#phase-4' },
-  { label: '05 · 装饰', href: '#phase-5' },
-  { label: '06 · 营业', href: '#phase-6' },
+  { label: '04 · 开业', href: '#phase-4' },
+  { label: '05 · 完善', href: '#phase-5' },
 ];
 
 /* Phase boundaries based on chronological entry index */
 const PHASES = [
-  { from: 0,  to: 1,  label: 'PHASE 01', title: '选址与签约',  color: '#3D5A3D' },
-  { from: 2,  to: 3,  label: 'PHASE 02', title: '注册证件',    color: '#5D4E37' },
-  { from: 4,  to: 6,  label: 'PHASE 03', title: '装修',        color: '#7BA05B' },
-  { from: 7,  to: 9,  label: 'PHASE 04', title: '物品采购',    color: '#94AD85' },
-  { from: 10, to: 10, label: 'PHASE 05', title: '装饰',        color: '#C8A786' },
-  { from: 11, to: 16, label: 'PHASE 06', title: '开业与营业',  color: '#3D5A3D' },
+  { from: 0,  to: 2,  label: 'PHASE 01', title: '选址与签约',  color: '#3D5A3D' },
+  { from: 3,  to: 3,  label: 'PHASE 02', title: '注册',        color: '#5D4E37' },
+  { from: 4,  to: 4,  label: 'PHASE 03', title: '装修',        color: '#7BA05B' },
+  { from: 5,  to: 5,  label: 'PHASE 04', title: '开业',        color: '#94AD85' },
+  { from: 6,  to: 7,  label: 'PHASE 05', title: '持续完善',    color: '#C8A786' },
 ];
 
 function phaseForIndex(i: number): typeof PHASES[number] {
@@ -288,10 +286,8 @@ function TextCard({
         {entry.title}
       </h3>
 
-      {/* Description */}
-      <p className="text-ink-700 leading-relaxed text-[15px]">
-        {entry.content}
-      </p>
+      {/* Description — multi-paragraph, \"**xxx**\" highlighted bold, \\n\\n split paragraphs */}
+      <DescriptionContent text={entry.content} />
 
       {/* Cost chip + lesson */}
       <div className="pt-2 space-y-3">
@@ -318,4 +314,53 @@ function TextCard({
       </div>
     </div>
   );
+}
+
+/* ---------- 富文本描述渲染 ----------
+ * - "\\n\\n" 切段落
+ * - "\\n" 软换行（紧凑 list）
+ * - "**xxx**" 加粗
+ * - "1." "2." 自动识别有序 list
+ */
+function DescriptionContent({ text }: { text: string }) {
+  const paragraphs = text.split('\n\n').filter(Boolean);
+  return (
+    <div className="space-y-4 text-ink-700 leading-relaxed text-[15px]">
+      {paragraphs.map((p, i) => {
+        // Detect ordered list paragraph: "1. xxx\\n2. xxx"
+        const isList = /^\d+\.\s/m.test(p);
+        if (isList) {
+          const items = p.split('\n').map((line) => line.replace(/^\d+\.\s*/, '').trim()).filter(Boolean);
+          return (
+            <ol key={i} className="space-y-2 pl-5 list-decimal marker:text-sage marker:font-mono marker:text-sm">
+              {items.map((it, j) => (
+                <li key={j} dangerouslySetInnerHTML={{ __html: boldify(it) }} />
+              ))}
+            </ol>
+          );
+        }
+        // Detect unordered list: "- xxx" or "— xxx"
+        if (/^[-—]\s/m.test(p)) {
+          const items = p.split('\n').map((line) => line.replace(/^[-—]\s*/, '').trim()).filter(Boolean);
+          return (
+            <ul key={i} className="space-y-2 pl-5 list-disc marker:text-sage">
+              {items.map((it, j) => (
+                <li key={j} dangerouslySetInnerHTML={{ __html: boldify(it) }} />
+              ))}
+            </ul>
+          );
+        }
+        // Detect soft-broken lines (no blank line, just \\n) -> join with <br>
+        const html = boldify(p).replace(/\n/g, '<br/>');
+        return (
+          <p key={i} dangerouslySetInnerHTML={{ __html: html }} />
+        );
+      })}
+    </div>
+  );
+}
+
+// 把 **xxx** 转换成 <strong class="text-ink-900 font-semibold">xxx</strong>
+function boldify(s: string) {
+  return s.replace(/\*\*([^*]+)\*\*/g, '<strong class="text-ink-900 font-semibold">$1</strong>');
 }

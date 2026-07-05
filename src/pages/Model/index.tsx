@@ -19,11 +19,28 @@ import {
   TrendingUp,
   Users,
 } from 'lucide-react';
+import SubNav from '../../components/layout/SubNav';
 import { IMAGES } from '../../data/images';
 
 /* --------------------------------------------------------------------------
    1. Hero — 轻舟模式封面
    -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   页面二级导航
+   -------------------------------------------------------------------------- */
+const modelSubNav = [
+  { label: '关键词',     href: '#keywords' },
+  { label: '切入点',     href: '#pain-points' },
+  { label: '案例',       href: '#story' },
+  { label: '案例成果',   href: '#case-results' },
+  { label: '构建成本',   href: '#build-costs' },
+  { label: '营销爆点',   href: '#build-marketing' },
+  { label: '模式对比',   href: '#comparison' },
+  { label: '可复制性',   href: '#reproducibility' },
+  { label: '合作模式',   href: '#cooperation' },
+  { label: '成功必然',   href: '#why-it-works' },
+];
+
 function Hero() {
   return (
     <section className="relative min-h-[80vh] bg-ink-900 text-white overflow-hidden grain">
@@ -96,7 +113,7 @@ function Keywords() {
   ];
 
   return (
-    <section className="bg-cream section">
+    <section id="keywords" className="bg-cream section">
       <div className="container-x">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
@@ -156,7 +173,7 @@ function PainPoints() {
   ];
 
   return (
-    <section className="bg-ink-900 text-white section grain relative overflow-hidden">
+    <section id="pain-points" className="bg-ink-900 text-white section grain relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-ink-900 via-ink-900 to-ink-800" />
       <div className="relative container-x">
         <div className="max-w-3xl mb-16">
@@ -271,7 +288,7 @@ function FounderStory() {
    -------------------------------------------------------------------------- */
 function CaseResults() {
   return (
-    <section className="bg-white section border-y border-ink-200">
+    <section id="case-results" className="bg-white section border-y border-ink-200">
       <div className="container-x">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
           {/* 店铺概况 */}
@@ -355,7 +372,7 @@ function CaseResults() {
    -------------------------------------------------------------------------- */
 function BuildLocation() {
   return (
-    <section className="bg-cream section">
+    <section id="build-location" className="bg-cream section">
       <div className="container-x">
         <SectionHeader num="05" title="店铺构建" subtitle="就近选址" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
@@ -411,7 +428,7 @@ function BuildRenovation() {
     '吊顶刷新漆，地面铺设地毯，快速焕新。',
   ];
   return (
-    <section className="bg-white section border-t border-ink-200">
+    <section id="build-renovation" className="bg-white section border-t border-ink-200">
       <div className="container-x">
         <SectionHeader num="06" title="店铺构建" subtitle="高装低价" dark={false} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
@@ -471,7 +488,7 @@ function BuildCosts() {
   const total = items.reduce((a, [, v]) => a + v, 0);
 
   return (
-    <section className="bg-cream section">
+    <section id="build-costs" className="bg-cream section">
       <div className="container-x">
         <SectionHeader num="07" title="店铺构建" subtitle="成本明细" />
         <div className="border border-ink-200 rounded-2xl overflow-hidden bg-white">
@@ -510,7 +527,7 @@ function BuildCosts() {
 
 function BuildCourses() {
   return (
-    <section className="bg-white section border-t border-ink-200">
+    <section id="build-courses" className="bg-white section border-t border-ink-200">
       <div className="container-x">
         <SectionHeader num="08" title="店铺构建" subtitle="课程规划" />
 
@@ -576,7 +593,7 @@ function BuildService() {
     { l: '课后交流', d: '交流心得，预约下次课程，延伸服务价值。' },
   ];
   return (
-    <section className="bg-cream section">
+    <section id="build-service" className="bg-cream section">
       <div className="container-x">
         <SectionHeader num="09" title="店铺构建" subtitle="贴心服务" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -612,7 +629,7 @@ function BuildService() {
 
 function BuildMarketing() {
   return (
-    <section className="bg-ink-900 text-white section grain relative overflow-hidden">
+    <section id="build-marketing" className="bg-ink-900 text-white section grain relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-ink-900 via-ink-900 to-ink-800" />
       <div className="relative container-x">
         <div className="flex items-center justify-between mb-16">
@@ -728,7 +745,7 @@ function SuccessFactors() {
   ];
 
   return (
-    <section className="bg-cream section">
+    <section id="success-factors" className="bg-cream section">
       <div className="container-x">
         <SectionHeader num="11" title="案例成功原因" subtitle="6 个关键决策" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
@@ -764,7 +781,7 @@ function Comparison() {
   ];
 
   return (
-    <section className="bg-white section border-y border-ink-200">
+    <section id="comparison" className="bg-white section border-y border-ink-200">
       <div className="container-x">
         <SectionHeader num="12" title="模式对比" subtitle="连锁店 vs 轻舟模式" />
 
@@ -795,7 +812,7 @@ function Comparison() {
    -------------------------------------------------------------------------- */
 function Reproducibility() {
   return (
-    <section className="bg-cream section">
+    <section id="reproducibility" className="bg-cream section">
       <div className="container-x">
         <SectionHeader num="13" title="是否具有可复制性" subtitle="人群画像 + 痛点" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
@@ -888,7 +905,7 @@ function Risks() {
   ];
 
   return (
-    <section className="bg-ink-900 text-white section grain relative overflow-hidden">
+    <section id="risks" className="bg-ink-900 text-white section grain relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-ink-900 via-ink-900 to-ink-800" />
       <div className="relative container-x">
         <div className="max-w-3xl mb-16">
@@ -1026,7 +1043,7 @@ function Cooperation() {
    -------------------------------------------------------------------------- */
 function WhyItWorks() {
   return (
-    <section className="bg-ink-900 text-white section grain relative overflow-hidden">
+    <section id="why-it-works" className="bg-ink-900 text-white section grain relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-ink-900 via-ink-900 to-ink-800" />
       <div className="relative container-x">
         <div className="max-w-3xl mb-16">
@@ -1106,6 +1123,7 @@ export default function Model() {
   return (
     <div className="bg-cream">
       <Hero />
+      <SubNav items={modelSubNav} />
       <Keywords />
       <PainPoints />
       <FounderStory />

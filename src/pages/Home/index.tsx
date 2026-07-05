@@ -23,6 +23,19 @@ import {
   studioAnalytics,
   studioOpeningDate,
 } from '../../mock/data';
+import SubNav from '../../components/layout/SubNav';
+
+/* --------------------------------------------------------------------------
+   Home 页面二级导航 — 浏览本页时始终可见
+   -------------------------------------------------------------------------- */
+const homeSubNav = [
+  { label: '数据看板', href: '#dashboard' },
+  { label: '认识馆主', href: '#teacher' },
+  { label: '6 大特点', href: '#features' },
+  { label: '课程价目', href: '#prices' },
+  { label: '充值档位', href: '#recharge' },
+  { label: '经济模型', href: '#method' },
+];
 
 /* --------------------------------------------------------------------------
    Hooks
@@ -922,6 +935,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <SloganBanner />
+      <SubNav items={homeSubNav} />
       <Dashboard />
       <Teacher />
       <Features />

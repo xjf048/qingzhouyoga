@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Filter, Search } from 'lucide-react';
+import SubNav from '../../components/layout/SubNav';
 import { useTransactionStore } from '../../stores/transactionStore';
 import { Transaction, TransactionCategory } from '../../types';
 
@@ -11,6 +12,18 @@ const categoryOptions: Array<TransactionCategory | '全部'> = [
   '物品',
   '装饰',
   '运营',
+];
+
+/* --------------------------------------------------------------------------
+   页面二级导航 — 跳到对应 phase
+   -------------------------------------------------------------------------- */
+const affairsSubNav = [
+  { label: '01 · 选址', href: '#phase-1' },
+  { label: '02 · 注册', href: '#phase-2' },
+  { label: '03 · 装修', href: '#phase-3' },
+  { label: '04 · 物品', href: '#phase-4' },
+  { label: '05 · 装饰', href: '#phase-5' },
+  { label: '06 · 营业', href: '#phase-6' },
 ];
 
 /* Phase boundaries based on chronological entry index */
@@ -126,6 +139,8 @@ export default function AffairsPage() {
         </div>
       </section>
 
+      <SubNav items={affairsSubNav} />
+
       {/* ====== Timeline ====== */}
       <section className="relative pb-24">
         {/* Center vertical line */}
@@ -174,7 +189,7 @@ function TimelineEntry({
   const showPhaseHeader = index === phase.from;
 
   return (
-    <article className="relative">
+    <article id={showPhaseHeader ? `phase-${phase.from + 1}` : undefined} className="relative">
       {/* Phase 标题（仅在该 phase 第一条出现） */}
       {showPhaseHeader && (
         <div className="relative pl-12 sm:pl-0 mb-10 sm:mb-14 mt-16 first:mt-0">

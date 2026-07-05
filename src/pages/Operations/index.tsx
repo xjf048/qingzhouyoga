@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight, RefreshCw } from 'lucide-react';
+import SubNav from '../../components/layout/SubNav';
 import {
   monthlyHistory,
   balanceSheet,
@@ -39,6 +40,18 @@ function todayStr() {
 }
 
 const TODAY = todayStr();
+
+/* --------------------------------------------------------------------------
+   页面二级导航
+   -------------------------------------------------------------------------- */
+const opsSubNav = [
+  { label: '月度营收',  href: '#monthly-revenue' },
+  { label: '关键指标',  href: '#metrics' },
+  { label: '卡分布',    href: '#card-dist' },
+  { label: '充值档位',  href: '#recharge-tiers' },
+  { label: '课程原价',  href: '#course-price' },
+  { label: '会员清单',  href: '#members' },
+];
 
 export default function OperationsPage() {
   const days = Math.max(0, Math.floor((Date.now() - studioOpeningDate.getTime()) / 86400000));
@@ -110,8 +123,10 @@ export default function OperationsPage() {
         </div>
       </section>
 
+      <SubNav items={opsSubNav} />
+
       {/* ====== Section: 月度营收曲线 ====== */}
-      <section className="container-x py-16">
+      <section id="monthly-revenue" className="container-x py-16">
         <SectionHead num="01" title="月度营收曲线" sub={`${monthlyHistory[0].label.slice(0, 4)} · ${monthlyHistory[0].month.slice(5)} → ${monthlyHistory[monthlyHistory.length-1].month.slice(0, 4)} · ${monthlyHistory[monthlyHistory.length-1].month.slice(5)}`} />
 
         <div className="border border-ink-200 rounded-2xl overflow-hidden bg-white">
@@ -187,7 +202,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ====== Section: 关键指标 ====== */}
-      <section className="container-x pb-16">
+      <section id="metrics" className="container-x pb-16">
         <SectionHead num="02" title="关键指标" sub={`${days} 天 · ${mockCourses.length} 课类 · 4 档充值`} />
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
@@ -217,7 +232,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ====== Section: 卡类型分布 ====== */}
-      <section className="container-x pb-16">
+      <section id="card-dist" className="container-x pb-16">
         <SectionHead num="03" title="会员卡分布" sub={`${mockCards.length} 张 · 按名称`} />
         <div className="border border-ink-200 rounded-2xl overflow-hidden">
           <table className="w-full text-sm">
@@ -258,7 +273,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ====== Section: 充值档位 ====== */}
-      <section className="container-x pb-16">
+      <section id="recharge-tiers" className="container-x pb-16">
         <SectionHead num="04" title="充值档位" sub="4 档 · 折后单价以体态调整 ¥298 为参考" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-200 border border-ink-200 rounded-2xl overflow-hidden">
           {mockRechargeTiers.map((t) => (
@@ -279,7 +294,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ====== Section: 课程价目 ====== */}
-      <section className="container-x pb-16">
+      <section id="course-price" className="container-x pb-16">
         <SectionHead num="05" title="课程原价" sub={`${mockPriceList.length} 类课程`} />
         <div className="border border-ink-200 rounded-2xl overflow-hidden">
           <table className="w-full text-sm">
@@ -310,7 +325,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ====== Section: 会员清单 ====== */}
-      <section className="container-x pb-16">
+      <section id="members" className="container-x pb-16">
         <SectionHead num="06" title="会员清单" sub={`${mockCards.length} 张卡 · ${uniqueMembers} 位独立会员 · 名称 / 电话已脱敏`} />
         <div className="border border-ink-200 rounded-2xl overflow-hidden">
           <div className="overflow-x-auto max-h-[640px]">

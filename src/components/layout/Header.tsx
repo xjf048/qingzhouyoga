@@ -43,10 +43,10 @@ export default function Header() {
           {/* Wordmark */}
           <Link to="/" className="group flex items-center gap-2.5">
             <img
-              src="/logo.jpg"
+              src="/logo-sm.png"
               alt="轻舟瑜伽 · 普拉提"
               className={`h-9 sm:h-10 w-auto object-contain transition-opacity ${
-                transparent ? 'brightness-0 invert opacity-95' : ''
+                transparent ? 'brightness-110 contrast-110' : ''
               }`}
             />
             <span

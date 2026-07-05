@@ -14,7 +14,7 @@ const IMG = (slot: string) => `/images/${slot}.jpg`;
 
 export const IMAGES = {
   /* ========== 品牌 ========== */
-  logo:           '/logo.jpg',                 // public/logo.jpg — 真实 logo
+  logo:           '/logo-sm.png',              // public/logo-sm.png — 真实透明 logo（600px）
 
   /* ========== 建馆日志（17 张）==========
    * 默认占位图已在 public/images/ 下生成（同 studio.jpg）。

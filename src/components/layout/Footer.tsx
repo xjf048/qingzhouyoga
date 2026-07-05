@@ -33,9 +33,9 @@ export default function Footer() {
         <div className="mb-20 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
           <div>
             <img
-              src="/logo.jpg"
+              src="/logo-sm.png"
               alt="轻舟瑜伽 · 普拉提"
-              className="h-20 sm:h-24 w-auto object-contain brightness-0 invert opacity-90"
+              className="h-20 sm:h-24 w-auto object-contain"
             />
             <p className="eyebrow-light mt-6">LIGHTBOAT YOGA & PILATES · 一人一馆</p>
           </div>

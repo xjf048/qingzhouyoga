@@ -5,7 +5,6 @@ import {
   Banknote,
   Check,
   CircleAlert,
-  CircleCheck,
   Compass,
   HandCoins,
   HeartHandshake,
@@ -20,6 +19,7 @@ import {
   TrendingUp,
   Users,
 } from 'lucide-react';
+import { IMAGES } from '../../data/images';
 
 /* --------------------------------------------------------------------------
    1. Hero — 轻舟模式封面
@@ -110,7 +110,7 @@ function Keywords() {
 
           <div className="lg:col-span-7">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-ink-200 mb-8">
-              <img src="/ppt/studio.jpg" alt="轻舟瑜伽普拉提馆 教室" className="w-full h-full object-cover" />
+              <img src={IMAGES.modelStudio} alt="轻舟瑜伽普拉提馆 教室" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <p className="eyebrow-light opacity-80">店铺实景</p>
@@ -515,7 +515,7 @@ function BuildCourses() {
         <SectionHeader num="08" title="店铺构建" subtitle="课程规划" />
 
         <div className="relative aspect-[16/8] rounded-2xl overflow-hidden border border-ink-200 mb-12">
-          <img src="/ppt/practice.jpg" alt="私教实拍" className="w-full h-full object-cover" />
+          <img src={IMAGES.modelPractice} alt="私教实拍" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 to-transparent" />
           <div className="absolute bottom-5 left-5 right-5 text-white">
             <p className="eyebrow-light opacity-80 mb-1">私教实拍</p>

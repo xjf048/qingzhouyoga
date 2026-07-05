@@ -359,7 +359,7 @@ function Dashboard() {
     { l: '人均消费', v: studioAnalytics.avgMemberValue, p: '¥', s: '/ 人', trend: '高于行业 2x' },
     { l: '私教均价', v: studioAnalytics.avgClassPrice, p: '¥', s: '/ 节', trend: '充值折扣后' },
     { l: '售卡总量', v: studioAnalytics.totalCardsSold, p: '', s: '张', trend: '44 张已激活' },
-    { l: '剩余价值', v: studioAnalytics.balanceRemaining, p: '¥', s: '', trend: '未耗 46.4%' },
+    { l: '剩余价值', v: studioAnalytics.balanceRemaining, p: '¥', s: '', trend: '已耗 53.6%' },
   ];
 
   return (

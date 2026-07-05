@@ -467,10 +467,10 @@ export const studioAnalytics = {
   avgMemberValue: 3_783,                // 人均消费 = 136180/36
   avgClassPrice: 161,                   // 私教单节均价
 
-  // 余额（来自 Excel 余额合计）
-  balanceRemaining: 121_774,            // 当前储值卡剩余
-  balanceConsumed: 14_406,              // 已耗卡 = 136180 - 121774
-  consumedRate: 0.106,                  // 耗卡率 10.6%
+  // 余额（OCR 来源：2026-07-04 截图）
+  balanceRemaining: 63_239.96,          // 剩余价值
+  balanceConsumed: 72_940.04,           // 已耗卡金额
+  consumedRate: 0.536,                  // 耗卡率 53.6% (72940.04 / 136180)
 
   // 卡类型分布（Excel 统计）
   cardTypeDist: [

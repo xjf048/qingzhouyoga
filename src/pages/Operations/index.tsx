@@ -56,10 +56,8 @@ const opsSubNav = [
 export default function OperationsPage() {
   const days = Math.max(0, Math.floor((Date.now() - studioOpeningDate.getTime()) / 86400000));
   const totalSpentFromCards = mockCards.reduce((s, c) => s + (c.price || 0), 0);
-  const totalRemainingFromCards = mockCards.reduce((s, c) => {
-    const m = c.balance.match(/[\d.]+/);
-    return s + (m ? Number(m[0]) : 0);
-  }, 0);
+  // 当前储值余额使用 OCR 权威数据 (2026-07-04 截图)，不再累加各卡余额
+  const totalRemainingFromCards = studioAnalytics.balanceRemaining;
   const cardNameDist = mockCards.reduce<Record<string, number>>((acc, c) => {
     acc[c.cardName] = (acc[c.cardName] || 0) + 1;
     return acc;

@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { path: '/', label: '首页' },
+  { path: '/story', label: '品牌故事' },
   { path: '/model', label: '轻舟模式' },
   { path: '/affairs', label: '馆内事务' },
   { path: '/operations', label: '运营数据' },

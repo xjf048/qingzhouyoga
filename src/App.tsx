@@ -6,6 +6,7 @@ import AffairsPage from './pages/Affairs';
 import TransactionDetailPage from './pages/Affairs/Detail';
 import OperationsPage from './pages/Operations';
 import ModelPage from './pages/Model';
+import StoryPage from './pages/Story';
 import AdminDashboard from './pages/Admin';
 import { ToastContainer } from './components/common/Toast';
 import { useToastStore } from './stores/toastStore';
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/affairs/:id" element={<TransactionDetailPage />} />
             <Route path="/operations" element={<OperationsPage />} />
             <Route path="/model" element={<ModelPage />} />
+            <Route path="/story" element={<StoryPage />} />
             <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>

@@ -218,12 +218,13 @@ function SloganBanner() {
   return (
     <section className="bg-cream py-20 sm:py-28 border-b border-ink-200">
       <div className="container-x text-center">
-        <p className="eyebrow-sage mb-6">{shopProfile.slogan.en}</p>
-        <h2 className="font-display font-black text-display-2xl text-ink-900 tracking-tightest leading-[1]">
-          灵动体态
-          <span className="text-sage italic font-medium mx-3 sm:mx-6">·</span>
-          看见更好的自己
+        <p className="eyebrow-sage mb-6">轻舟寄语</p>
+        <h2 className="font-display font-black text-display-xl sm:text-display-2xl text-ink-900 tracking-tightest leading-[1.05] max-w-4xl mx-auto">
+          「轻舟已过万重山」
         </h2>
+        <p className="mt-8 text-ink-700 text-lg leading-relaxed max-w-2xl mx-auto">
+          愿每一位走进轻舟的人，都能在这里找到属于自己的轻盈与自在。
+        </p>
       </div>
     </section>
   );

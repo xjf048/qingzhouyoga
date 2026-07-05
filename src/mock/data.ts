@@ -362,18 +362,6 @@ export const studioAnalytics = {
 //   - 排课数据 / 今日预约：「待小程序 API 接入」 — UI 显示「—」
 // ==========================================================================
 
-  phone: c.phone,
-  level: c.cardName,
-  joinDate: c.issuedAt,
-  totalBookings: 0,                       // 后台未提供（保持 0 而非瞎编）
-  totalSpent: c.price,                    // 📦 Excel 收费金额
-  lastVisit: c.issuedAt,                   // 用发卡日期近似（后台未单独字段）
-}));
-
-// ==========================================================================
-// mockCourses — 仅保留有真实依据的字段
-// 名称 / 类型 / 价格 来源 OCR；schedule / booked 删除（无源）
-// ==========================================================================
 export const mockCourses: CourseData[] = [
   { id: '1', name: '减脂塑形',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, price: 288 },
   { id: '2', name: '体态调整',   type: 'pilates', coachId: '1', coachName: '晨晨老师', capacity: 1, price: 298 },
@@ -1019,3 +1007,19 @@ export const mockCards = [
 // ==========================================================================
 // 会员卡清单 — 来自小程序后台导出（2026-07-05 04:00），含脱敏
 // ==========================================================================
+
+// ==========================================================================
+// mockMembers: 别名指向真实 mockCards (Excel 脱敏导出)
+// 仅保留 UI 需要的字段；totalBookings = 0（后台未提供，留 0 而非瞎编）
+// ==========================================================================
+import type { MemberData as MemberDataType } from '../types';
+export const mockMembers: MemberDataType[] = mockCards.map((c) => ({
+  id: c.cardNo,
+  name: c.nick,
+  phone: c.phone,
+  level: c.cardName,
+  joinDate: c.issuedAt,
+  totalBookings: 0,                       // 后台未提供（保留 0 而非瞎编）
+  totalSpent: c.price,                    // 📦 Excel 收费金额
+  lastVisit: c.issuedAt,                  // 用发卡日期近似
+}));

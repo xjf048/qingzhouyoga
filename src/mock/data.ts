@@ -498,14 +498,14 @@ export const studioAnalytics = {
     { label: '上门私教',   value: 11_980, pct: 0.087 },
   ],
 
-  // 投入估算（OCR 没有真实数据，保留合理估值）
-  totalInvestment: 186_000,
-  monthlyFixedCost: 8_200,
+  // 投入（来自 PPT 真实账本）
+  totalInvestment: 59_765,             // 含一年房租 + 装修 + 设备 + 系统
+  totalInvestmentNote: '含一年房租 + 全部装修 + 设备 + 系统',
+  monthlyFixedCost: 500,                // 房租已含一年，实际每月仅水电
+  monthlyFixedCostNote: '房租已含一年 · 实际仅水电约 ¥400-500',
   costBreakdown: [
-    { label: '房租', value: 6_200 },
-    { label: '水电', value: 800 },
-    { label: '耗材 / 茶饮', value: 600 },
-    { label: '平台 / 工具', value: 600 },
+    { label: '电费（冬夏）', value: '¥10 – 500 / 月' },
+    { label: '水费', value: '≈ ¥30 / 月' },
   ],
 
   // 里程碑

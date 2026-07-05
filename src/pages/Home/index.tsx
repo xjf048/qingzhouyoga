@@ -747,7 +747,7 @@ function RechargeTiers() {
    -------------------------------------------------------------------------- */
 function Method() {
   const netMonthly = studioAnalytics.monthlyAvgRevenue - studioAnalytics.monthlyFixedCost;
-  const realMonthsToBreakEven = studioAnalytics.cumulativeRevenue / netMonthly;
+  const monthsToBreakEven = studioAnalytics.totalInvestment / netMonthly;
 
   return (
     <section id="method" className="bg-ink-900 text-white section grain relative overflow-hidden">
@@ -777,13 +777,14 @@ function Method() {
           <div className="lg:col-span-7 space-y-px bg-white/8 border border-white/10 rounded-2xl overflow-hidden">
             <Row label="开馆时长" value={`${studioAnalytics.monthsInOperation} 个月`} note="2025.12.01 至今" />
             <Row label="累计收款" value={`¥${studioAnalytics.cumulativeRevenue.toLocaleString()}`} note="真实小程序流水" accent />
-            <Row label="月度固定成本" value={`¥${studioAnalytics.monthlyFixedCost.toLocaleString()}`} note="房租 + 水电 + 耗材 + 工具" />
+            <Row label="总投资" value={`¥${studioAnalytics.totalInvestment.toLocaleString()}`} note={studioAnalytics.totalInvestmentNote} accent />
+            <Row label="月度固定成本" value={`¥${studioAnalytics.monthlyFixedCost.toLocaleString()}`} note={studioAnalytics.monthlyFixedCostNote} />
             <Row label="月均营收" value={`¥${studioAnalytics.monthlyAvgRevenue.toLocaleString()}`} note="开业 7 个月均值" accent />
             <Row label="月净盈余" value={`+¥${netMonthly.toLocaleString()}`} note="营收 − 固定成本 · 个人时间不计" accent />
             <Row
               label="实际回本周期"
-              value={`${realMonthsToBreakEven.toFixed(1)} 个月`}
-              note="累计收款 ÷ 月净盈余 · 线性估算"
+              value={`${monthsToBreakEven.toFixed(1)} 个月`}
+              note="总投资 ÷ 月净盈余 · 线性估算"
             />
           </div>
         </div>

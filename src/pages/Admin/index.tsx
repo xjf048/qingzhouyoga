@@ -58,8 +58,10 @@ export default function AdminDashboard() {
                 <LayoutDashboard className="w-6 h-6 text-data2" />
               </div>
               <div>
-                <p className="text-2xl font-mono font-bold text-accent">{mockOverview.todayBookings}</p>
-                <p className="text-sm text-muted">今日预约</p>
+                <p className="text-2xl font-mono font-bold text-accent">
+                  {mockOverview.todayBookings ?? '—'}
+                </p>
+                <p className="text-sm text-muted">今日预约 · 待接口对接</p>
               </div>
             </Card>
           </div>

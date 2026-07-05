@@ -55,7 +55,7 @@ export default function Header() {
                 transparent ? 'text-white/50' : 'text-muted'
               }`}
             >
-              LIGHTBOAT
+              QINGZHOU
             </span>
           </Link>
 

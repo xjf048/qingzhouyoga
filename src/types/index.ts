@@ -31,12 +31,12 @@ export interface User {
 }
 
 export interface OperationsOverview {
-  todayBookings: number;
-  weekBookings: number;
-  monthMembers: number;
-  totalMembers: number;
-  todayRevenue: number;
-  monthRevenue: number;
+  todayBookings: number | null;   // null = 小程序 API 暂未对接
+  weekBookings:  number | null;
+  monthMembers:  number;
+  totalMembers:  number;
+  todayRevenue:  number | null;
+  monthRevenue:  number;
 }
 
 export interface RevenueData {
@@ -75,9 +75,9 @@ export interface CourseData {
   coachId: string;
   coachName: string;
   capacity: number;
-  booked: number;
+  booked?: number;             // 可选：后台未对接「实时约课人数」
   price: number;
-  schedule: { day: string; time: string }[];
+  schedule?: { day: string; time: string }[];   // 可选：实际排课表待对接
 }
 
 export interface Category {

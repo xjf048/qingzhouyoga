@@ -295,121 +295,96 @@ export const mockTransactions: Transaction[] = [
 
 
 // ==========================================================================
-// 实时运营快照（最新一月）
+// 实时运营快照
+// 所有字段均有真实数据来源；无来源的字段置 null，由 UI 显示「待接入」或省略。
 // ==========================================================================
 export const mockOverview: OperationsOverview = {
-  todayBookings: 2,
-  weekBookings: 14,
-  monthMembers: 1,
-  totalMembers: 36,                     // 来自 Excel 独立会员手机号
-  todayRevenue: 350,
-  monthRevenue: 3000,
+  todayBookings: null,                  // 小程序后台未开放实时约课数据接口
+  weekBookings:  null,
+  monthMembers:  1,                     // 2026·7 月新增（来自月报）
+  totalMembers:  36,                    // 来自 Excel 独立会员手机号
+  todayRevenue:  null,
+  monthRevenue:  3000,                  // 来自 monthlyHistory 2026·7
 };
 
 // ==========================================================================
-// 经营分析（基于 Excel + 月度数据汇总）
+// 经营分析
+// 字段后注释来源：无注释 = 来源见类型说明「📦 = EXCEL/OCR」「🧮 = 派生」
 // ==========================================================================
 export const studioAnalytics = {
-  // 营收
-  cumulativeRevenue: 136_180,           // 累计收款（Excel 收费金额合计）
-  monthlyAvgRevenue: 19_454,            // 月均
-  highestMonth: { label: '2026 · 3 月', value: 27_000 },
+  // 📦 营收 — 来自 Excel + 收款统计截图
+  cumulativeRevenue: 136_180,           // 📦 Excel 收费金额合计
+  monthlyAvgRevenue: 19_454,            // 🧮 136180 / 7
+  highestMonth:      { label: '2026 · 3 月', value: 27_000 },   // 📦
 
-  // 用户（来自 Excel）
-  totalMembers: 36,                     // 独立会员数（按手机号去重）
-  totalCardsSold: 40,                   // 总售卡数（Excel 行数）
-  totalCardsActive: 37,                 // 状态"正常"的卡
-  totalCardsInactive: 3,                // 已停/过期等
-  totalPrivateClasses: 452,             // 累计私教节数
-  avgMemberValue: 3_783,                // 人均消费 = 136180/36
-  avgClassPrice: 161,                   // 私教单节均价
+  // 📦 用户 — 来自 Excel + OCR
+  totalMembers:         36,             // 📦 Excel 去重手机号
+  totalCardsSold:       40,             // 📦 Excel 行数
+  totalCardsActive:     37,             // 📦 状态"正常"的卡
+  totalCardsInactive:   3,              // 📦
+  totalPrivateClasses:  452,            // 📦 OCR (2025年合计 17 + 2026 月报 435)
+  avgMemberValue:       3_783,          // 🧮 136180 / 36
+  avgClassPrice:        161,            // 🧮 12720 / 79 (6 月)
 
-  // 余额（OCR 来源：2026-07-04 截图）
-  balanceRemaining: 63_239.96,          // 剩余价值
-  balanceConsumed: 72_940.04,           // 已耗卡金额
-  consumedRate: 0.536,                  // 耗卡率 53.6% (72940.04 / 136180)
+  // 📦 余额 — OCR (2026-07-04)
+  balanceRemaining:     63_239.96,      // 📦
+  balanceConsumed:      72_940.04,      // 📦
+  consumedRate:         0.536,          // 🧮 72940 / 136180
 
-  // 卡类型分布（Excel 统计）
+  // 📦 卡名称分布 — Excel 统计
   cardTypeDist: [
-    { label: '体验卡专用',    count: 2,  totalAmount: 0,     avgPrice: 0 },
-    { label: '创始会员专供',  count: 27, totalAmount: 124180, avgPrice: 4600 },
-    { label: '会员卡',        count: 11, totalAmount: 12000,  avgPrice: 1091 },
+    { label: '体验卡专用',    count: 2,  totalAmount: 0,      avgPrice: 0 },
+    { label: '创始会员专供',  count: 27, totalAmount: 124180,  avgPrice: 4600 },
+    { label: '会员卡',        count: 11, totalAmount: 12000,   avgPrice: 1091 },
   ],
   cardTypeTotal: 40,
 
-  // 充值结构（从 4 档推导：预估分布）
-  rechargeMix: [
-    { label: '1,000 入门档',  count: 8,  value: 8_000,   pct: 0.058 },
-    { label: '3,000 常规档',  count: 18, value: 54_000,  pct: 0.397 },
-    { label: '6,000 进阶档',  count: 12, value: 72_000,  pct: 0.529 },
-    { label: '10,000 深度档', count: 1,  value: 10_000,  pct: 0.074 },
-  ],
-
-  // 课程结构（基于真实价格表 + 实际耗卡分布）
-  courseMix: [
-    { label: '减脂塑形',   value: 28_400, pct: 0.209 },
-    { label: '体态调整',   value: 22_600, pct: 0.166 },
-    { label: '产后修复',   value: 31_800, pct: 0.234 },
-    { label: '女性私密',   value: 24_200, pct: 0.178 },
-    { label: '自由练习',   value: 9_800,  pct: 0.072 },
-    { label: '线上私教',   value: 7_400,  pct: 0.054 },
-    { label: '上门私教',   value: 11_980, pct: 0.087 },
-  ],
-
-  // 投入（来自 PPT 真实账本）
-  totalInvestment: 59_765,             // 含一年房租 + 装修 + 设备 + 系统
-  totalInvestmentNote: '含一年房租 + 全部装修 + 设备 + 系统',
-  monthlyFixedCost: 500,                // 房租已含一年，实际每月仅水电
-  monthlyFixedCostNote: '房租已含一年 · 实际仅水电约 ¥400-500',
+  // 📦 投入（用户明确给出）
+  totalInvestment:        59_765,       // 📦 用户明确：「含一年房租 + 全部装修 + 设备 + 系统」
+  totalInvestmentNote:    '含一年房租 + 全部装修 + 设备 + 系统',
+  monthlyFixedCost:       500,          // 📦 用户明确：「只有水电，电费 ¥10-500/月」
+  monthlyFixedCostNote:   '房租已含一年 · 实际每月仅水电约 ¥10 – 500',
   costBreakdown: [
     { label: '电费（冬夏）', value: '¥10 – 500 / 月' },
-    { label: '水费', value: '≈ ¥30 / 月' },
+    { label: '水费',         value: '≈ ¥30 / 月' },
   ],
 
-  // 里程碑
-  openedAt: new Date('2025-12-01'),
+  // 📦 里程碑
+  openedAt:        new Date('2025-12-01'),
   monthsInOperation: 7,
 };
 
 // ==========================================================================
-// 30 天营收折线（用于小图）
+// mockRevenue / mockBookings / mockCourses.schedule 均已删除
+// 原因：无可信数据源
+// 替代：
+//   - 会员数据改用下面真实的 mockCards (Excel 导出)
+//   - 排课数据 / 今日预约：「待小程序 API 接入」 — UI 显示「—」
 // ==========================================================================
-export const mockRevenue: RevenueData[] = Array.from({ length: 30 }, (_, i) => {
-  const date = new Date();
-  date.setDate(date.getDate() - (29 - i));
-  return {
-    date: date.toISOString().split('T')[0],
-    amount: Math.floor(Math.random() * 1500) + 200,
-    orders: Math.floor(Math.random() * 5) + 1,
-  };
-});
 
-export const mockBookings: BookingData[] = [
-  { id: '1', courseId: '1', courseName: '体态调整', memberId: '1', memberName: '林女士', coachName: '晨晨老师', date: '2026-07-05', timeSlot: '09:00-10:00', status: 'confirmed' },
-  { id: '2', courseId: '3', courseName: '产后修复', memberId: '2', memberName: '吴女士', coachName: '晨晨老师', date: '2026-07-05', timeSlot: '14:00-15:00', status: 'pending' },
-  { id: '3', courseId: '1', courseName: '减脂塑形', memberId: '3', memberName: '周先生', coachName: '晨晨老师', date: '2026-07-05', timeSlot: '19:30-20:30', status: 'confirmed' },
-  { id: '4', courseId: '4', courseName: '女性私密', memberId: '4', memberName: '黄女士', coachName: '晨晨老师', date: '2026-07-06', timeSlot: '09:00-10:00', status: 'confirmed' },
-];
+  phone: c.phone,
+  level: c.cardName,
+  joinDate: c.issuedAt,
+  totalBookings: 0,                       // 后台未提供（保持 0 而非瞎编）
+  totalSpent: c.price,                    // 📦 Excel 收费金额
+  lastVisit: c.issuedAt,                   // 用发卡日期近似（后台未单独字段）
+}));
 
-export const mockMembers: MemberData[] = [
-  { id: '1', name: '林女士', phone: '138****1234', level: '6,000 充值档', joinDate: '2026-01-15', totalBookings: 38, totalSpent: 6_000, lastVisit: '2026-07-04' },
-  { id: '2', name: '吴女士', phone: '139****5678', level: '3,000 充值档', joinDate: '2026-02-08', totalBookings: 18, totalSpent: 3_000, lastVisit: '2026-07-03' },
-  { id: '3', name: '周先生', phone: '137****9012', level: '3,000 充值档', joinDate: '2026-03-01', totalBookings: 12, totalSpent: 3_000, lastVisit: '2026-07-04' },
-  { id: '4', name: '黄女士', phone: '136****3456', level: '6,000 充值档', joinDate: '2026-04-10', totalBookings: 24, totalSpent: 6_000, lastVisit: '2026-07-02' },
-];
-
-// 一人一馆 — 仅 7 个课程，全部由馆主一人带
+// ==========================================================================
+// mockCourses — 仅保留有真实依据的字段
+// 名称 / 类型 / 价格 来源 OCR；schedule / booked 删除（无源）
+// ==========================================================================
 export const mockCourses: CourseData[] = [
-  { id: '1', name: '减脂塑形',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 1, price: 288, schedule: [{ day: '周一', time: '09:00' }, { day: '周三', time: '09:00' }, { day: '周五', time: '09:00' }] },
-  { id: '2', name: '体态调整',   type: 'pilates', coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 1, price: 298, schedule: [{ day: '周二', time: '10:00' }, { day: '周四', time: '10:00' }] },
-  { id: '3', name: '产后修复',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 1, price: 328, schedule: [{ day: '周二', time: '14:00' }, { day: '周四', time: '14:00' }, { day: '周六', time: '15:00' }] },
-  { id: '4', name: '女性私密',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 1, price: 368, schedule: [{ day: '周一', time: '14:00' }, { day: '周三', time: '14:00' }] },
-  { id: '5', name: '自由练习',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 0, price: 118, schedule: [{ day: '周一', time: '19:30' }, { day: '周三', time: '19:30' }, { day: '周五', time: '19:30' }] },
-  { id: '6', name: '线上私教',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 1, price: 138, schedule: [{ day: '周二', time: '20:00' }, { day: '周四', time: '20:00' }] },
-  { id: '7', name: '上门私教',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, booked: 0, price: 0,   schedule: [{ day: '周六', time: '09:00' }] },
+  { id: '1', name: '减脂塑形',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, price: 288 },
+  { id: '2', name: '体态调整',   type: 'pilates', coachId: '1', coachName: '晨晨老师', capacity: 1, price: 298 },
+  { id: '3', name: '产后修复',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, price: 328 },
+  { id: '4', name: '女性私密',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, price: 368 },
+  { id: '5', name: '自由练习',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, price: 118 },
+  { id: '6', name: '线上私教',   type: 'yoga',    coachId: '1', coachName: '晨晨老师', capacity: 1, price: 138 },
+  { id: '7', name: '上门私教',   type: 'therapy', coachId: '1', coachName: '晨晨老师', capacity: 1, price: 0   },
 ];
 
-// 一人一馆 — 仅展示主理人
+// 一人一馆 — 仅展示主理人（来自用户明确选定）
 export const mockCoaches = [
   {
     id: '1',
@@ -430,7 +405,7 @@ export const mockCoaches = [
   },
 ];
 
-// 充值档位（与 mockRechargeTiers 同步，但 mockMemberships 给另一个 component 用）
+// 充值档位 — 与 mockRechargeTiers 同步
 export const mockMemberships = [
   { id: 'r1', name: '入门档', price: 1000,  period: '充 1,000', description: '第一次来，先试一档', perks: ['实得 1,500 元课程', '6.7 折单价', '无使用期限'], highlight: false },
   { id: 'r2', name: '常规档', price: 3000,  period: '充 3,000', description: '一个月 8-10 节稳定练习', perks: ['实得 5,000 元课程', '6 折单价', '老学员推荐有礼'], highlight: false },
@@ -438,7 +413,8 @@ export const mockMemberships = [
   { id: 'r4', name: '深度档', price: 10000, period: '充 10,000', description: '一年长期的练习承诺', perks: ['实得 20,000 元课程', '5 折单价', '赠送 1 节上门私教'], highlight: false },
 ];
 
-export const studioOpeningDate = new Date('2025-12-01');export const mockCards = [
+export const studioOpeningDate = new Date('2025-12-01');
+export const mockCards = [
   {
     phone: '153****3952',
     nick: '大**',

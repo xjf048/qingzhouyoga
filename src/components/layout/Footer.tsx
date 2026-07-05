@@ -38,7 +38,7 @@ export default function Footer() {
               alt="轻舟瑜伽 · 普拉提"
               className="h-20 sm:h-24 w-auto object-contain"
             />
-            <p className="eyebrow-light mt-6">LIGHTBOAT YOGA & PILATES · 一人一馆</p>
+            <p className="eyebrow-light mt-6">QINGZHOU YOGA & PILATES · 一人一馆</p>
           </div>
           <h2 className="font-display font-black text-display-xl text-white leading-[0.95] tracking-tightest max-w-md">
             我把过程摆给你看。
@@ -103,7 +103,7 @@ export default function Footer() {
 
       {/* Bottom mega-wordmark */}
       <div className="border-t border-white/8 py-10 overflow-hidden">
-        <p className="font-display font-black text-white/5 text-[18vw] leading-none tracking-tightest text-center whitespace-nowrap select-none">
+        <p className="font-display font-black text-white/5 text-[11vw] sm:text-[13vw] md:text-[15vw] leading-none tracking-tightest text-center whitespace-nowrap select-none">
           轻舟瑜伽 · 普拉提
         </p>
       </div>

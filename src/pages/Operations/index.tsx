@@ -6,7 +6,6 @@ import {
   balanceSheet,
   mockOverview,
   mockCourses,
-  mockMembers,
   mockCards,
   mockPriceList,
   mockRechargeTiers,
@@ -313,7 +312,11 @@ export default function OperationsPage() {
                   <td className="px-5 py-3 text-ink-900 font-medium">{c.name}</td>
                   <td className="px-5 py-3 text-xs">{mockPriceList[i]?.tag ? <span className="px-2 py-0.5 rounded bg-sage/10 text-sage">{mockPriceList[i].tag}</span> : '—'}</td>
                   <td className="px-5 py-3 text-ink-700 text-xs">{c.type === 'yoga' ? '瑜伽' : c.type === 'pilates' ? '普拉提' : '理疗'}</td>
-                  <td className="px-5 py-3 text-xs font-mono text-ink-700">{c.schedule.map((s) => `${s.day} ${s.time}`).join(' · ')}</td>
+                  <td className="px-5 py-3 text-xs font-mono text-ink-700">
+                    {c.schedule?.length
+                      ? c.schedule.map((s) => `${s.day} ${s.time}`).join(' · ')
+                      : <span className="text-muted">— 待接入</span>}
+                  </td>
                   <td className="px-5 py-3 text-right font-mono tabular-nums font-bold text-ink-900">{c.price === 0 ? '另议' : `¥${c.price}`}</td>
                 </tr>
               ))}

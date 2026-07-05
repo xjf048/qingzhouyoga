@@ -41,7 +41,7 @@ function Hero() {
           <span className="eyebrow-light">轻舟模式 · 为瑜伽私教馆创业持续赋能</span>
         </div>
 
-        <h1 className="font-display font-black tracking-tightest leading-[0.92] text-[clamp(3rem,11vw,9rem)] max-w-5xl">
+        <h1 className="font-display font-black tracking-tightest leading-[0.92] text-[clamp(2.25rem,11vw,9rem)] max-w-5xl text-balance">
           <span className="block animate-slide-up">小而美，</span>
           <span className="block animate-slide-up delay-100">高盈利。</span>
           <span className="block animate-slide-up delay-200 italic font-medium text-sage-300">

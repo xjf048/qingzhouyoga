@@ -24,7 +24,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink-900 text-white relative overflow-hidden">
+    <footer className="bg-ink-900 text-white relative overflow-hidden pb-safe">
       {/* Top hairline */}
       <div className="absolute top-0 inset-x-0 h-px bg-white/8" />
 

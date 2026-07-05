@@ -21,11 +21,21 @@
 html {
   scroll-behavior: smooth;
   background: #FAF8F4;
+  /* iOS — prevent rubber-band overscroll */
+  overscroll-behavior-y: none;
 }
 
 body {
   @apply bg-cream text-ink-800 antialiased;
   font-feature-settings: "ss01", "cv11", "kern";
+  /* Prevent any element from causing horizontal scroll on mobile */
+  overflow-x: hidden;
+  /* Disable tap highlight, improve mobile feel */
+  -webkit-tap-highlight-color: transparent;
+  /* Smooth font on iOS */
+  text-rendering: optimizeLegibility;
+  /* Prevent text-size adjust on iOS rotation */
+  -webkit-text-size-adjust: 100%;
 }
 
 ::selection {
@@ -189,5 +199,13 @@ body {
     background-size: 3px 3px;
     pointer-events: none;
     mix-blend-mode: overlay;
+  }
+
+  /* iOS safe-area utilities — 在底部留出 home indicator 空间 */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0);
   }
 }

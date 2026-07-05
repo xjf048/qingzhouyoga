@@ -45,7 +45,7 @@ export default function Header() {
             <img
               src="/logo-sm.png"
               alt="轻舟瑜伽 · 普拉提"
-              className={`h-9 sm:h-10 w-auto object-contain transition-opacity ${
+              className={`h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity ${
                 transparent ? 'brightness-110 contrast-110' : ''
               }`}
             />

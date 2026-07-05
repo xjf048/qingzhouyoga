@@ -98,7 +98,7 @@ function Hero() {
         </div>
 
         <div className="flex-1 flex flex-col justify-center max-w-6xl">
-          <h1 className="font-display font-black tracking-tightest leading-[0.92] text-[clamp(3rem,11vw,9rem)]">
+          <h1 className="font-display font-black tracking-tightest leading-[0.92] text-[clamp(2.25rem,11vw,9rem)] text-balance">
             <span className="block animate-slide-up">开馆第</span>
             <span className="block animate-slide-up delay-100 font-mono tabular-nums">
               {dayCount}

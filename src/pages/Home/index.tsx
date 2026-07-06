@@ -19,7 +19,6 @@ import {
   mockRechargeTiers,
   monthlyHistory,
   balanceSheet,
-  mockTransactions,
   studioAnalytics,
   studioOpeningDate,
 } from '../../mock/data';
@@ -856,78 +855,6 @@ function Lesson({ type, title, body }: { type: 'good' | 'bad'; title: string; bo
 }
 
 /* --------------------------------------------------------------------------
-   Latest Affairs — 8 journal entries with real timeline
-   -------------------------------------------------------------------------- */
-function LatestAffairs() {
-  const items = mockTransactions;
-
-  return (
-    <section className="bg-cream section">
-      <div className="container-x">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
-          <div>
-            <p className="eyebrow-sage mb-4">08 — 建馆日志</p>
-            <h2 className="font-display font-black text-display-lg text-ink-900 tracking-tightest">
-              每一笔花销、每一个数据点，
-              <br />
-              <span className="text-sage">如实记录</span>。
-            </h2>
-          </div>
-          <Link to="/affairs" className="btn-link">
-            全部日志
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="divide-y divide-ink-200 border-t border-b border-ink-200">
-          {items.map((t) => (
-            <Link
-              key={t.id}
-              to={`/affairs/${t.id}`}
-              className="group grid grid-cols-12 gap-4 sm:gap-6 py-6 sm:py-7 items-start hover:bg-white transition-colors -mx-3 px-3 sm:-mx-6 sm:px-6 rounded-xl"
-            >
-              <div className="col-span-3 sm:col-span-2">
-                <span className="font-mono text-xs text-muted tabular-nums">{t.createdAt.replace(/-/g, '.')}</span>
-                <div className="mt-2">
-                  <span className="pill-outline-dark text-[10px] uppercase tracking-widest-2">{t.category}</span>
-                </div>
-              </div>
-
-              <div className="col-span-9 sm:col-span-6">
-                <h3 className="font-display font-semibold text-lg sm:text-xl text-ink-900 leading-snug group-hover:text-sage transition-colors mb-2">
-                  {t.title}
-                </h3>
-                {t.lesson && (
-                  <p className="text-sm text-muted leading-relaxed italic line-clamp-2">"{t.lesson}"</p>
-                )}
-              </div>
-
-              <div className="col-span-12 sm:col-span-2 text-left sm:text-right">
-                {t.cost != null && (
-                  <>
-                    <p className="eyebrow text-[10px] text-muted">{t.category === '运营' ? '当月' : '本阶段'}</p>
-                    <p className="font-mono tabular-nums font-bold text-lg text-ink-900">
-                      ¥{t.cost.toLocaleString()}
-                    </p>
-                  </>
-                )}
-              </div>
-
-              <div className="col-span-12 sm:col-span-2 flex items-center sm:justify-end justify-between">
-                <span className="text-xs font-mono text-muted">{t.viewCount} 浏览</span>
-                <ArrowRight className="w-4 h-4 text-ink-400 group-hover:text-sage group-hover:translate-x-1 transition-all" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-
-/* --------------------------------------------------------------------------
    Page
    -------------------------------------------------------------------------- */
 export default function Home() {
@@ -943,7 +870,6 @@ export default function Home() {
       <PriceList />
       <RechargeTiers />
       <Method />
-      <LatestAffairs />
     </div>
   );
 }

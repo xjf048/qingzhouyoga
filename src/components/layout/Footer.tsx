@@ -6,7 +6,6 @@ const navGroups = [
     title: '公开',
     items: [
       { label: '经营数据', path: '/operations' },
-      { label: '建馆日志', path: '/affairs' },
       { label: '轻舟模式', path: '/model' },
       { label: '品牌故事', path: '/story' },
     ],

@@ -1026,13 +1026,6 @@ function Cooperation() {
             </ul>
           </div>
         </div>
-
-        <div className="mt-16 text-center">
-          <Link to="/affairs" className="btn-primary">
-            留下你的开馆计划书
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
       </div>
     </section>
   );

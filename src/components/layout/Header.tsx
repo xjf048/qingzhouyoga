@@ -5,7 +5,6 @@ import { Menu, X } from 'lucide-react';
 const navItems = [
   { path: '/', label: '首页' },
   { path: '/operations', label: '运营数据' },
-  { path: '/affairs', label: '馆内事务' },
   { path: '/model', label: '轻舟模式' },
   { path: '/story', label: '品牌故事' },
 ];
@@ -85,16 +84,6 @@ export default function Header() {
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-2">
-            <Link
-              to="/affairs"
-              className={`hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-pill text-sm font-semibold transition-all ${
-                transparent
-                  ? 'bg-white text-ink-900 hover:bg-cream'
-                  : 'bg-ink-900 text-cream hover:bg-ink-800'
-              }`}
-            >
-              公开账本
-            </Link>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="menu"
@@ -127,10 +116,10 @@ export default function Header() {
               );
             })}
             <Link
-              to="/affairs"
+              to="/story"
               className="mt-2 px-3 py-3 rounded-xl text-base font-semibold text-white bg-ink-900 text-center"
             >
-              公开账本
+              品牌故事
             </Link>
           </nav>
         </div>

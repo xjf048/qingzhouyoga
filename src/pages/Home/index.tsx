@@ -219,7 +219,7 @@ function SloganBanner() {
     <section className="bg-cream py-20 sm:py-28 border-b border-ink-200">
       <div className="container-x text-center">
         <p className="eyebrow-sage mb-6">轻舟寄语</p>
-        <h2 className="font-display font-black text-display-xl sm:text-display-2xl text-ink-900 tracking-tightest leading-[1.05] max-w-4xl mx-auto">
+        <h2 className="font-display font-black text-[clamp(2rem,7vw,5.5rem)] text-ink-900 tracking-tightest leading-[1.05] whitespace-nowrap">
           「轻舟已过万重山」
         </h2>
         <p className="mt-8 text-ink-700 text-lg leading-relaxed max-w-2xl mx-auto">

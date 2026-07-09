@@ -67,7 +67,7 @@ function Hero() {
         </h1>
 
         <div className="mt-12 max-w-2xl animate-fade-in delay-500">
-          <p className="text-white/70 text-lg sm:text-xl leading-relaxed">
+          <p className="text-white/70 text-lg sm:text-xl leading-relaxed font-body">
             我把自己从 0 到 1 开馆的全部过程 ——
             选址、装修、定价、获客、复购 ——
             整理成一套可复制的轻资产方法。
@@ -1098,7 +1098,7 @@ function WhyItWorks() {
    -------------------------------------------------------------------------- */
 function SectionHeader({ num, title, subtitle, dark }: { num: string; title: string; subtitle: string; dark?: boolean }) {
   return (
-    <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
+    <div className="flex items-end justify-between mb-12 flex-wrap gap-4 reveal">
       <div>
         <p className={`eyebrow mb-3 ${dark ? 'text-sage-300' : 'text-sage'}`}>{num} — {title}</p>
         <h2 className="font-display font-black text-display-lg text-ink-900 tracking-tightest">

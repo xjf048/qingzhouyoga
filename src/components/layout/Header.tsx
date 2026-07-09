@@ -35,7 +35,7 @@ export default function Header() {
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         transparent
           ? 'bg-transparent'
-          : 'bg-cream/85 backdrop-blur-md border-b border-ink-200/70'
+          : 'nav-blur'
       }`}
     >
       <div className="container-x">

@@ -80,7 +80,7 @@ export default function Story() {
 
       {/* ============== 二、轻的理念 ============== */}
       <Section id="light-philosophy" eyebrow="02" title="轻的理念">
-        <p className="text-ink-700 text-lg leading-relaxed mb-8">
+        <p className="font-body text-lg text-ink-700 leading-relaxed mb-8 drop-cap">
           从一开始，我们就坚定地选择了私教路线。
         </p>
         <p className="text-ink-700 text-lg leading-relaxed mb-8">
@@ -141,7 +141,7 @@ export default function Story() {
 
       {/* ============== 四、轻舟愿景 ============== */}
       <Section id="vision" eyebrow="04" title="轻舟愿景">
-        <p className="text-ink-700 text-lg sm:text-xl leading-relaxed mb-8">
+        <p className="font-body text-lg sm:text-xl text-ink-700 leading-relaxed mb-8">
           「轻舟已过万重山」—— 这是诗人李白的豁达，也是我们的人生哲学。
         </p>
         <p className="text-ink-700 text-lg leading-relaxed mb-8">
@@ -270,7 +270,7 @@ export default function Story() {
           <div className="max-w-3xl mx-auto text-center">
             <Quote className="w-10 h-10 text-sage mx-auto mb-8" />
             <p className="font-display font-black text-display-lg text-ink-900 leading-tight tracking-tightest mb-10 text-balance">
-              「轻舟已过万重山」
+              <span className="font-editorial italic text-gradient-blush">「轻舟已过万重山」</span>
             </p>
             <p className="text-ink-700 text-lg leading-relaxed mb-10">
               愿每一位走进轻舟的人，都能在这里找到属于自己的轻盈与自在。
@@ -316,11 +316,13 @@ function Section({
         />
       )}
       <div className="relative container-x max-w-4xl">
-        <p className={`eyebrow ${dark ? 'text-sage-300' : 'text-sage'} mb-4`}>{eyebrow}</p>
-        <h2 className="font-display font-black text-display-lg tracking-tightest mb-10">
+        <p className={`eyebrow ${dark ? 'text-sage-300' : 'text-sage'} mb-4 reveal`}>{eyebrow}</p>
+        <h2 className="font-display font-black text-display-lg tracking-tightest mb-10 reveal">
           {title}
         </h2>
-        {children}
+        <div className="reveal">
+          {children}
+        </div>
       </div>
     </section>
   );

@@ -10,13 +10,19 @@ import StoryPage from './pages/Story';
 import AdminDashboard from './pages/Admin';
 import { ToastContainer } from './components/common/Toast';
 import { useToastStore } from './stores/toastStore';
+import useScrollReveal from './hooks/useScrollReveal';
 
 export default function App() {
   const { toasts, removeToast } = useToastStore();
 
+  // Wire reveal / count-up / bar-grow / draw-line / ring-fill / progress bar
+  useScrollReveal();
+
   return (
     <Router>
       <div className="min-h-screen bg-background flex flex-col">
+        {/* v2.1 top scroll progress bar */}
+        <div id="progress-top" className="progress-top" />
         <Header />
         <main className="flex-1">
           <Routes>

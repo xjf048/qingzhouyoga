@@ -61,12 +61,42 @@ export default {
           700: '#5E4A30',
         },
         muted: '#8A867D',
+        // v2.1 warm accent palette
+        blush: {
+          50:  '#FDF4F4',
+          100: '#F9E4E7',
+          200: '#F5C2C7',
+          300: '#EDA0AA',
+          400: '#E07D8C',
+          500: '#C95D6E',
+          600: '#A04353',
+        },
+        peach: {
+          50:  '#FDF6EE',
+          100: '#FAE8D4',
+          200: '#F4D4B2',
+          300: '#EBBE8E',
+          400: '#E0A66B',
+          500: '#C8894A',
+          600: '#9A6A37',
+        },
+        lavender: {
+          50:  '#F5F1F8',
+          100: '#E8DEF0',
+          200: '#D4C3E2',
+          300: '#BFA4D2',
+          400: '#A684C0',
+          500: '#8765A8',
+          600: '#684B83',
+        },
       },
       fontFamily: {
         serif: ['Cormorant Garamond', 'Noto Serif SC', 'serif'],
         sans: ['Inter', 'Noto Sans SC', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['JetBrains Mono', 'DIN Alternate', 'ui-monospace', 'monospace'],
         display: ['Cormorant Garamond', 'Noto Serif SC', 'serif'],
+        editorial: ['Playfair Display', 'Noto Serif SC', 'serif'],
+        body: ['Fraunces', 'Noto Serif SC', 'serif'],
       },
       fontSize: {
         // Editorial scale — matching day1cj massiveness
@@ -84,6 +114,12 @@ export default {
         'marquee':     'marquee 60s linear infinite',
         'blink':       'blink 1.6s ease-in-out infinite',
         'pulse-soft':  'pulseSoft 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        // v2.1 motion
+        'fade-up':     'fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards',
+        'ken-burns':   'kenBurns 22s ease-in-out infinite alternate',
+        'shimmer':     'shimmer 3s linear infinite',
+        'float':       'float 7s ease-in-out infinite',
+        'draw-line':   'drawLine 1.5s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -113,6 +149,27 @@ export default {
         pulseSoft: {
           '0%, 100%': { opacity: '0.6' },
           '50%': { opacity: '1' },
+        },
+        // v2.1 motion
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        kenBurns: {
+          '0%': { transform: 'scale(1.05) translate(0,0)' },
+          '100%': { transform: 'scale(1.18) translate(-2%,-1%)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        float: {
+          '0%,100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-14px)' },
+        },
+        drawLine: {
+          '0%': { strokeDashoffset: '1000' },
+          '100%': { strokeDashoffset: '0' },
         },
       },
       borderRadius: {

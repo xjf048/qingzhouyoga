@@ -42,7 +42,7 @@ export default function SubNav({ items }: { items: SubNavItem[] }) {
   }, [items]);
 
   return (
-    <div className="sticky top-16 sm:top-20 z-30 bg-cream/90 backdrop-blur-md border-b border-ink-200 pt-safe">
+    <div className="sticky top-16 sm:top-20 z-30 nav-blur pt-safe">
       <div className="container-x flex gap-1.5 overflow-x-auto py-3 scrollbar-hide">
         {items.map((it) => {
           const isActive = it.href === activeHref;
@@ -52,8 +52,8 @@ export default function SubNav({ items }: { items: SubNavItem[] }) {
               href={it.href}
               className={`px-3.5 py-1.5 rounded-pill text-xs sm:text-sm font-medium whitespace-nowrap transition-colors min-h-[36px] flex items-center ${
                 isActive
-                  ? 'bg-ink-900 text-cream'
-                  : 'bg-white text-ink-700 border border-ink-200 hover:bg-ink-100 hover:text-ink-900'
+                  ? 'bg-sage text-white'
+                  : 'bg-white text-ink-700 border border-ink-200 hover:bg-sage/10 hover:text-sage'
               }`}
             >
               {it.label}

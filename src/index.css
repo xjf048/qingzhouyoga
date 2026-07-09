@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -218,4 +218,251 @@ body {
   [id] {
     scroll-margin-top: 6.5rem;
   }
+}
+
+/* ==========================================================================
+   v2.1 Design System — warm accents, count-up, draw-line, glass, etc.
+   ========================================================================== */
+
+/* Money highlighting */
+.money {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #3D5A3D;
+  text-shadow: 0 0 24px rgba(148, 173, 133, 0.15);
+}
+.money .symbol {
+  color: #94AD85;
+  font-weight: 500;
+  font-size: 0.7em;
+  margin-right: 2px;
+}
+.money-lg { font-size: clamp(2.25rem, 4.5vw, 3.5rem); line-height: 1; }
+.money-xl { font-size: clamp(2.75rem, 6vw, 4.5rem); line-height: 1; }
+.money-on-dark { color: #94AD85; text-shadow: 0 0 30px rgba(148, 173, 133, 0.4); }
+.money-on-dark .symbol { color: #94AD85; }
+.money-warm { color: #A04353; text-shadow: 0 0 24px rgba(224, 125, 140, 0.18); }
+.money-warm .symbol { color: #E07D8C; }
+.money-peach { color: #9A6A37; }
+.money-peach .symbol { color: #C8894A; }
+.money-shadow { filter: drop-shadow(0 4px 16px rgba(148, 173, 133, 0.25)); }
+
+/* Num count style */
+.num-count {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+/* Bar grow — from 0 to target height/width */
+.bar-grow {
+  height: 0% !important;
+  transition: height 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: bottom;
+}
+.bar-grow-h {
+  width: 0% !important;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* SVG draw */
+.draw-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.draw-path.drawn { stroke-dashoffset: 0; }
+.draw-area {
+  opacity: 0;
+  transition: opacity 1.2s ease-out 0.4s;
+}
+.draw-area.drawn { opacity: 1; }
+.draw-dot {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 400ms, transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.draw-dot.drawn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Ring fill (progress ring) */
+.ring-fill {
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reveal — scroll fade-up */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.reveal-stagger.in > * {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.reveal-stagger.in > *:nth-child(1) { animation-delay: 0ms; }
+.reveal-stagger.in > *:nth-child(2) { animation-delay: 80ms; }
+.reveal-stagger.in > *:nth-child(3) { animation-delay: 160ms; }
+.reveal-stagger.in > *:nth-child(4) { animation-delay: 240ms; }
+.reveal-stagger.in > *:nth-child(5) { animation-delay: 320ms; }
+.reveal-stagger.in > *:nth-child(6) { animation-delay: 400ms; }
+.reveal-stagger.in > *:nth-child(7) { animation-delay: 480ms; }
+.reveal-stagger.in > *:nth-child(8) { animation-delay: 560ms; }
+
+/* Glass / gradient backgrounds */
+.glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.glass-dark {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(15, 14, 12, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.bg-dawn {
+  background: linear-gradient(180deg, #FAF8F4 0%, #FDF4F4 30%, #FAE8D4 70%, #F5F1F8 100%);
+}
+.bg-night {
+  background: linear-gradient(135deg, #1A1917 0%, #283628 50%, #1A1917 100%);
+}
+.bg-sunset {
+  background: linear-gradient(135deg, #FDF4F4 0%, #FAE8D4 50%, #E8DEF0 100%);
+}
+
+/* Gradient text */
+.text-gradient-warm {
+  background: linear-gradient(135deg, #E07D8C 0%, #C8894A 50%, #8765A8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-leaf {
+  background: linear-gradient(135deg, #94AD85 0%, #3D5A3D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-gradient-blush {
+  background: linear-gradient(135deg, #E07D8C 0%, #A684C0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Highlight underline */
+.highlight {
+  background: linear-gradient(180deg, transparent 60%, rgba(232, 190, 142, 0.45) 60%, rgba(232, 190, 142, 0.45) 92%, transparent 92%);
+  padding: 0 4px;
+}
+.highlight-blush {
+  background: linear-gradient(180deg, transparent 60%, rgba(245, 194, 199, 0.5) 60%, rgba(245, 194, 199, 0.5) 92%, transparent 92%);
+  padding: 0 4px;
+}
+
+/* Drop cap */
+.drop-cap::first-letter {
+  font-family: 'Playfair Display', 'Noto Serif SC', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 3.6em;
+  line-height: 0.85;
+  float: left;
+  padding: 0.1em 0.15em 0 0;
+  color: #E07D8C;
+}
+
+/* Tilt card hover */
+.tilt-card {
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms;
+}
+.tilt-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Scroll progress bar (top) */
+.progress-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #94AD85, #E07D8C, #C8894A, #8765A8);
+  z-index: 9999;
+  transition: width 80ms linear;
+}
+
+/* Soft / warm / deep shadows */
+.shadow-soft { box-shadow: 0 4px 24px -8px rgba(15, 14, 12, 0.08), 0 2px 8px -4px rgba(15, 14, 12, 0.04); }
+.shadow-warm { box-shadow: 0 14px 40px -12px rgba(224, 125, 140, 0.18), 0 4px 16px -4px rgba(232, 190, 142, 0.12); }
+.shadow-deep { box-shadow: 0 30px 60px -20px rgba(15, 14, 12, 0.30), 0 10px 24px -8px rgba(15, 14, 12, 0.12); }
+
+/* Nav blur */
+.nav-blur {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(250, 248, 244, 0.78);
+  border-bottom: 1px solid rgba(15, 14, 12, 0.06);
+}
+
+/* Mock photo placeholder — used in v2.1 hero / teacher portrait */
+.mock-img {
+  background: linear-gradient(135deg, #FDF4F4 0%, #FAE8D4 50%, #E8DEF0 100%);
+  position: relative;
+  overflow: hidden;
+}
+.mock-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(61, 90, 61, 0.18), transparent 50%);
+}
+
+/* Warm shimmer button (v2.1 primary CTA) */
+.btn-warm {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #E07D8C 0%, #C8894A 100%);
+  color: #FFFEFB;
+  border-radius: 9999px;
+  padding: 14px 32px;
+  font-weight: 600;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  transition: transform 250ms, box-shadow 250ms;
+  box-shadow: 0 8px 24px -8px rgba(224, 125, 140, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.btn-warm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -8px rgba(224, 125, 140, 0.7);
+}
+.btn-warm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+.btn-warm:hover::before {
+  transform: translateX(100%);
 }
